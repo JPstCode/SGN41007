@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.preprocessing import normalize
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
+import cv2 as cv
 
 c1 = np.load('class1.npy')
 c2 = np.load('class2.npy')
@@ -13,11 +14,11 @@ data = []
 labels = []
 for img in c1:
     data.append(normalize(img))
-    labels.append(1)
+    labels.append(0)
 
 for img in c2:
     data.append(normalize(img))
-    labels.append(2)
+    labels.append(1)
 
 data = np.asarray(data).reshape([-1,64,64,3])
 labels = np.asarray(labels)
